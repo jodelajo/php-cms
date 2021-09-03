@@ -49,7 +49,6 @@ if (isset($_POST['submit'])) {
     while ($row = mysqli_fetch_assoc($search_query)) {
         $post_title = $row['post_title'];
         
-
         if (!$search_query) {
             die("fail" . mysqli_error($connection));
         }
@@ -60,5 +59,5 @@ if (isset($_POST['submit'])) {
         } else { 
             echo $post_title;
         }
-        ?>
+    ?>
 ```
