@@ -59,5 +59,5 @@ if (isset($_POST['submit'])) {
         } else { 
             echo $post_title;
         }
-    ?>
+?>
 ```
