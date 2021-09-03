@@ -16,18 +16,26 @@
                     <small>Ja jij!</small>
                 </h1>
 
-
 <?php 
-$query = "SELECT * FROM posts";
+if (isset($_POST['submit'])) {
+    $search = $_POST['search'];
+    $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' ";
+    $search_query = mysqli_query($connection, $query);
+    while ($row = mysqli_fetch_assoc($search_query)) {
+        $post_title = $row['post_title'];
+        $post_author = $row['post_author'];
+        $post_date = $row['post_date'];
+        $post_image = $row['post_image'];
+        $post_content = $row['post_content'];
 
-$select_all_posts_query = mysqli_query($connection, $query);
-// sort of mapfunction
-while($row = mysqli_fetch_assoc($select_all_posts_query)) {
-$post_title = $row['post_title'];
-$post_author = $row['post_author'];
-$post_date = $row['post_date'];
-$post_image = $row['post_image'];
-$post_content = $row['post_content'];
+        if (!$search_query) {
+            die("fail" . mysqli_error($connection));
+        }
+
+        $count = mysqli_num_rows($search_query);
+        if ($count == 0) {
+            echo "no result";
+        } else {
 
 ?>
                
@@ -46,14 +54,21 @@ $post_content = $row['post_content'];
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
                 <!-- <hr> -->
 
-<?php 
+<?php
+        }
+    }
 }
 ?>
+      
+
+
+
 </div>
 
+
  <!-- Blog Sidebar Widgets Column -->
-            <?php include "includes/sidebar.php" ?>  
+            <?php include "includes/sidebar.php"; ?>  
         <!-- /.row -->
         <hr>
         <!-- Footer -->
-      <?php include "includes/footer.php" ?>
+      <?php include "includes/footer.php"; ?>
