@@ -15,7 +15,7 @@ define(strtoupper($key), $value);
 
 $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 if(!$connection) {
-    die("failed database connection");
+    die("failed database connection" .  mysqli_error($connection));
 }
 ?>
 ```
@@ -60,4 +60,10 @@ if (isset($_POST['submit'])) {
             echo $post_title;
         }
 ?>
+```
+
+### MySql commands
+```php
+$query = "SELECT * FROM posts";
+$query = "INSERT INTO categories(cat_title) ";
 ```
