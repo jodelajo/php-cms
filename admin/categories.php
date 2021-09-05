@@ -3,39 +3,20 @@
     <div id="wrapper">
         <!-- Navigation -->
         <!-- TopNav -->
-        <?php include "includes/side_nav.php"?>
-
+<?php include "includes/side_nav.php"?>
         <div id="page-wrapper">
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Welkom to Admin
-                            <small>Author</small>
-                        </h1>   
-                        
+                            ADMIN - Categories
+                            <!-- <small>Author</small> -->
+                        </h1>                           
                         <div class="col-xs-6">
-
-                <?php 
-                if (isset($_POST['submit'])) {
-                    $cat_title = $_POST['cat_title'];
-
-                    if ($cat_title == "" || empty($cat_title)) {
-                        echo "This field should not be empty";
-                    } else {
-                        $query = "INSERT INTO categories(cat_title) ";
-                        $query .= "VALUE('{$cat_title}') ";
-
-                        $create_category_query = mysqli_query($connection, $query);
-                        if(!$create_category_query) {
-                            die("query  failed" .  mysqli_error($connection));
-                        }
-                    }
-                }
-
-                ?>
-
+<?php 
+insert_categories();
+?>
                             <form action="" method="post"> 
                                  <div class="form-group">
                                     <label for="cat_title">Add Category</label>
@@ -44,34 +25,32 @@
                                 <div class="form-group">
                                     <input class="btn btn-primary" type="submit" name="submit" class="submit" value="Add Category">
                                 </div>
-                         </form>
+                            </form>
+
+<?php //UPDATE AND INCLUDE QUERY
+if(isset($_GET['edit'])) {
+    $cat_id = $_GET['edit'];
+    include "includes/update_categories.php";
+}
+?>
                         </div>
                         <div class="col-xs-6">
-
-
-                        <?php 
-    $query = "SELECT * FROM categories LIMIT 10";
-    $select_categories = mysqli_query($connection, $query);
-?>
-
                         <label for="category">Categories</label>
                             <table class="table table-bordered table-hover" name="category">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
                                         <th>Category Title</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php 
-                while($row = mysqli_fetch_assoc($select_categories)) {
-                    $cat_id =   $row['cat_id'];
-                    $cat_title =   $row['cat_title'];
-                    echo "<tr>";
-                    echo "<td> {$cat_id}</td>";
-                    echo "<td> {$cat_title}</td>";
-                    echo "</tr>";
-                    } ?>
+                            
+<?php 
+findAllCategories();
+deleteCategories();
+?>
                                 </tbody>
                             </table>
                         </div>
