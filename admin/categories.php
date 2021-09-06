@@ -27,11 +27,8 @@ insert_categories();
                                 </div>
                             </form>
 
-<?php //UPDATE AND INCLUDE QUERY
-if(isset($_GET['edit'])) {
-    $cat_id = $_GET['edit'];
-    include "includes/update_categories.php";
-}
+<?php 
+updateCategories();
 ?>
                         </div>
                         <div class="col-xs-6">

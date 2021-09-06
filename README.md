@@ -21,7 +21,7 @@ if(!$connection) {
 ```
 
 
-another_file.php
+another_file.php:
 ```php
 <?php include "includes/db.php" ?>
 <?php 
@@ -38,7 +38,7 @@ while($row = mysqli_fetch_assoc($select_all_posts_query)) {
 ?>
 ```
 ### search functionality
-search.php
+search.php:
 ```php
 <?php include "includes/db.php" ?>
 <?php
@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
         }
 ?>
 ```
-### Update Database form
+### Update Database form categories
 ```php
 <form action="" method="post"> 
     <div class="form-group">
@@ -111,4 +111,14 @@ $cat_title = $_GET['cat_title']; //GET FROM DB
 ```php
 header("Location: categories.php");
 ```
+### Edit post link
+```php
+ echo "<td> <a href='posts.php?source=edit_post&post_id={$post_id}'>Edit</a></td>";
+ ```
+### create excerpt
+0 - 150 characters. 
+```php
+$post_content = substr($row['post_content'],0,150);
+```
+
 
