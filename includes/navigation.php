@@ -15,20 +15,17 @@
                 <ul class="nav navbar-nav">
 
 <?php 
-
 $query = "SELECT * FROM categories";
 $select_all_categories_query = mysqli_query($connection, $query);
 // sort of mapfunction
 while($row = mysqli_fetch_assoc($select_all_categories_query)) {
   $cat_title =   $row['cat_title'];
+  $cat_id =   $row['cat_id'];
 
-  echo "<li> <a href='#'>{$cat_title}</a> </li>";
+  echo "<li> <a href='category.php?category=$cat_id'>{$cat_title}</a> </li>";
 }
-
 ?>
-
-
-                 <li>
+                    <li>
                         <a href="admin">Admin</a>
                     </li>
                     <!-- <li>
