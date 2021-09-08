@@ -260,5 +260,96 @@ function insert_comments() {
         }     
     }
 
+    //USERS
 
+function findAllUsers() {
+    global $connection;
+// FIND ALL POST QUERY
+    $query = "SELECT * FROM users";
+    $select_users = mysqli_query($connection, $query);
+
+//MAPPING OVER ARRAY OF POST
+while($row = mysqli_fetch_assoc($select_users)) {
+    $user_id =   $row['user_id'];
+    $user_email =  $row['user_email'];
+    $user_password =  $row['user_password'];
+    $username =  $row['username'];
+    $user_firstname =   $row['user_firstname'];
+    $user_lastname =  $row['user_lastname'];
+    $user_role =  $row['user_role'];
+    $user_image =  $row['user_image'];
+
+//OUTPUT MAP  
+    echo "<tr>";
+    echo "<td> $user_id</td>";
+    echo "<td> $username</td>";
+    echo "<td> $user_email</td>";
+    echo "<td> $user_firstname</td>";
+    echo "<td> $user_lastname</td>";
+    echo "<td> $user_role</td>";
+    echo "<td> <a href='users.php?change_to_admin={$user_id}'>Admin</a></td>";
+    echo "<td> <a href='users.php?change_to_sub={$user_id}'>Subscriber</a></td>";
+    echo "<td> <a href='users.php?source=edit_user&edit_user={$user_id}'>Edit</a></td>";
+    echo "<td> <a href='users.php?delete={$user_id}'>Delete</a></td>";
+    echo "</tr>";
+    }
+}
+
+function insert_users() {
+    global $connection;
+  
+    if (isset($_POST['create_user'])) {
+
+        //  $user_id =   $_POST['user_id'];
+        $user_email =  $_POST['user_email'];
+        $user_password =  $_POST['user_password'];
+        $username =  $_POST['username'];
+        $user_firstname =   $_POST['user_firstname'];
+        $user_lastname =  $_POST['user_lastname'];
+        $user_role =  $_POST['user_role'];
+        // $user_image =   $_FILES['image']['name'];
+        // $user_image_temp =  $_FILES['image']['tmp_name'];
+        $user_date =  date('d-m-y');
+       
+    
+        // move_uploaded_file($user_image_temp, "../images/$user_image");
+    
+        $query = "INSERT INTO users(user_email, user_password, username, user_firstname, user_lastname, user_role) ";
+        $query .= "VALUES('{$user_email}', {$user_password}, '{$username}', '{$user_firstname}', '{$user_lastname}', '{$user_role}' ) ";
+    
+        $create_users_query = mysqli_query($connection, $query);
+        confirmQuery($create_users_query);
+        header("Location: users.php");
+    }
+}
+
+function deleteUsers() {
+    global $connection;
+    if(isset($_GET['delete'])) {
+        $user_id = $_GET['delete']; 
+        $query = "DELETE FROM users WHERE user_id = {$user_id} ";
+        $delete_user_query = mysqli_query($connection, $query);
+        header("Location: users.php");
+    }
+}
+
+function approveAdmin() {
+    global $connection;
+    if(isset($_GET['change_to_admin'])) {
+        $user_id = $_GET['change_to_admin']; 
+        $query = "UPDATE users SET user_role = 'admin' WHERE user_id = {$user_id} ";
+        $approve_admin_query = mysqli_query($connection, $query); 
+        header("Location: users.php");
+    }
+}
+
+function approveSub() {
+    global $connection;
+    if(isset($_GET['change_to_sub'])) {
+        $user_id = $_GET['change_to_sub']; 
+        $query = "UPDATE users SET user_role = 'subscriber' WHERE user_id = {$user_id} ";
+        $approve_sub_query = mysqli_query($connection, $query); 
+        header("Location: users.php");
+    }
+}
 ?>
