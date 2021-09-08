@@ -19,22 +19,12 @@ while($row = mysqli_fetch_assoc($select_users)) {
 }
 
 if (isset($_POST['edit_user'])) {
-
-    //  $user_id =   $_POST['user_id'];
     $user_email =  $_POST['user_email'];
     $user_password =  $_POST['user_password'];
     $username =  $_POST['username'];
     $user_firstname =   $_POST['user_firstname'];
     $user_lastname =  $_POST['user_lastname'];
     $user_role =  $_POST['user_role'];
-    // $user_image =   $_FILES['image']['name'];
-    // $user_image_temp =  $_FILES['image']['tmp_name'];
-    // $user_date =  date('d-m-y');
-   
-
-    // move_uploaded_file($user_image_temp, "../images/$user_image");
-
-
 
     $query = "UPDATE users SET ";
     $query .="user_firstname = '{$user_firstname}', ";
@@ -74,23 +64,16 @@ if (isset($_POST['edit_user'])) {
         <label for="user_role">Role</label>
         <br/>
         <select name="user_role" id="user_role">
-
-  
         <option value="subscriber"><?php echo $user_role;?></option>
-
-        <?php 
-        if($user_role == 'admin') {
-           echo   "<option value='subscriber'>subscriber</option>";
-        } else {
-            echo "<option value='admin'>admin</option>";
-        }
-        
-        ?>     
-            
-           
+<?php 
+if($user_role == 'admin') {
+    echo   "<option value='subscriber'>subscriber</option>";
+} else {
+    echo "<option value='admin'>admin</option>";
+}      
+?>   
         </select>
     </div>
-
     <!-- <div class="form-group">
         <label for="post_image">Post Image</label>
         <input type="file" name="image">
@@ -99,12 +82,7 @@ if (isset($_POST['edit_user'])) {
         <label for="user_password">Password</label>
         <input value="<?php echo $user_password; ?>" class="form-control" type="password" name="user_password">
     </div>
-    <!-- <div class="form-group">
-        <label for="post_content">Post Content</label>
-        <textarea class="form-control" name="post_content"  id="" cols="30" rows="10"></textarea>
-    </div> -->
     <div class="form-group">
         <input class="btn btn-primary" type="submit" name="edit_user" value="Update">
     </div>
-   
 </form>

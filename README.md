@@ -120,5 +120,20 @@ header("Location: categories.php");
 ```php
 $post_content = substr($row['post_content'],0,150);
 ```
+### protect data 
+```php
+$username = mysqli_real_escape_string($connection, $username);
+```
+### Sessions (create global variables during a session)
+```php
+//INPUT:
+session_start();
+$_SESSION['username'] = $db_username;
+
+//OUTPUT in different file:
+session_start();
+<small>  <?php echo $_SESSION['firstname']; ?> </small>;
+```
+
 
 
