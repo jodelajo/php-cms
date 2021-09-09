@@ -1,7 +1,7 @@
 <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; CMS with PHP 2021</p>
+                    <p>Copyright &copy; CMS with PHP 20<?php echo date('y');?></p>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
