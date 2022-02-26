@@ -12,7 +12,7 @@ https://www.udemy.com/course/php-for-complete-beginners-includes-msql-object-ori
 Pageview:
 <img width="1382" alt="image" src="https://user-images.githubusercontent.com/74967270/155850609-deed11e6-6802-464e-81f7-eb18efc2282e.png">
 
-Admin- dashboard:
+Admin - dashboard:
 <img width="1344" alt="image" src="https://user-images.githubusercontent.com/74967270/155850784-2613b2fa-8823-49d1-8bb5-c645bfbf1aa9.png">
 
 Admin - posts:
