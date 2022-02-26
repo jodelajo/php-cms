@@ -1,4 +1,4 @@
-# php-cms
+# php-cms basics course
 
 Blog-page with cms-dashboard built with php.
 
