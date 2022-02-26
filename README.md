@@ -1,5 +1,25 @@
 # php-cms
 
+Blog-page with cms-dashboard built with php.
+
+PHP-tutorial
+https://youtu.be/0hOMA_-jnpI?t=251
+
+on Udemy:
+https://www.udemy.com/course/php-for-complete-beginners-includes-msql-object-oriented/learn/lecture/2380324#overview
+
+
+Pageview:
+<img width="1382" alt="image" src="https://user-images.githubusercontent.com/74967270/155850609-deed11e6-6802-464e-81f7-eb18efc2282e.png">
+
+Admin- dashboard:
+<img width="1344" alt="image" src="https://user-images.githubusercontent.com/74967270/155850784-2613b2fa-8823-49d1-8bb5-c645bfbf1aa9.png">
+
+Admin - posts:
+<img width="1393" alt="image" src="https://user-images.githubusercontent.com/74967270/155850863-998be2cf-ce10-4db4-bbda-11b4b0d72aff.png">
+
+
+
 ### get data from database
 db.php:
 ```php
